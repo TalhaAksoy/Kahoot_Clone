@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="styles.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script defer src="script.js"></script>
   <title>YY'22</title>
+  <style>
+    .btn
+    {
+      
+    }
+  </style>
 </head>
-<body>
-  <div class="container">
+<body class = "bg-purple-900">
+  <div class="container shadow-none">
     <div id="question-container" class="hide">
-      <div id="question" class="question">Question</div>
+      <div id="question" class="question text-center">Question</div>
       <div id="answer-buttons" class="btn-grid">
         <button class="btn">Answer 1</button>
         <button class="btn">Answer 2</button>
@@ -19,8 +27,36 @@
         <button class="btn">Answer 4</button>
       </div>
     </div>
+    <div id="lobby-place" class="w-full mb-2">
+      <div id="line0" class="w-full h-20 max-h-96 overflow-y-scroll flex">
+        <div class="name1 w-1/5 h-full flex">
+          <span class="m-auto"></span>
+        </div>
+        <div class="name2 w-1/5 h-full"></div>
+        <div class="name3 w-1/5 h-full flex">
+          <span class="m-auto idSpan text-2xl font-bold"></span>
+        </div>
+        <div class="name4 w-1/5 h-full"></div>
+        <div class="name5 w-1/5 h-full flex">
+          <span class="m-auto"></span>
+        </div>
+      </div>  
+      <div id="line1" class="w-full h-20 max-h-96 overflow-y-scroll flex">
+          <div class="name1 w-1/5 h-full flex">
+            <span class="m-auto nameSpan"></span>
+          </div>
+          <div class="name2 w-1/5 h-full"></div>
+          <div class="name3 w-1/5 h-full flex">
+            <span class="m-auto">...</span>
+          </div>
+          <div class="name4 w-1/5 h-full"></div>
+          <div class="name5 w-1/5 h-full flex">
+            <span class="m-auto">...</span>
+          </div>
+        </div>
+    </div>
     <div class="controls">
-      <button id="start-btn" class="start-btn btn">Start</button>
+      <button id="start-btn" class="start-btn rounded-lg bg-purple-500 hover:bg-purple-800 text-white">Start</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
   </div>

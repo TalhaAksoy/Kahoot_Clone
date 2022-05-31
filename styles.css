@@ -55,6 +55,7 @@ body.wrong {
   background-color: hsl(var(--hue), 100%, 50%);
   border-radius: 5px;
   padding: 5px 10px;
+  height: 100px;
   color: black;
   outline: none;
 }

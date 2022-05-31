@@ -1,4 +1,5 @@
 const startButton = document.getElementById('start-btn')
+const lobby = $("#lobby-place")
 const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
@@ -13,8 +14,19 @@ nextButton.addEventListener('click', () => {
   setNextQuestion()
 })
 
+$(document).ready(function(){
+  const url = window.location.href
+  const value = url.split('?')
+  const userName = value[1].split("=")[1]
+  const gameId = value[2]
+  $(".nameSpan").text(userName)
+  $(".idSpan").text(gameId)
+
+});
+
 function startGame() {
   startButton.classList.add('hide')
+  lobby.addClass('hide')
   shuffledQuestions = questions.sort()
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
@@ -66,8 +78,11 @@ function selectAnswer(e) {
     // TODO: end screen
     hataorani = 100 - ((wrong / (score + wrong)) * 100)
     console.log(hataorani)
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
+    const url = window.location.href
+    const value = url.split('?')
+    const userName = value[1].split("=")[1]
+    const gameId = value[2]
+    window.location.href = "./end.html?userName="+userName+"?scoreBoard="+hataorani+"";
   }
 }
 
