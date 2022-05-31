@@ -4,8 +4,8 @@ const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 
-let shuffledQuestions, currentQuestionIndex
-let score = 0
+let shuffledQuestions, currentQuestionIndex, hataorani
+let score = 0,wrong = 0
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -51,6 +51,11 @@ function resetState() {
 function selectAnswer(e) {
   const selectedButton = e.target
   const correct = selectedButton.dataset.correct
+  if (correct)
+    score++
+  else
+    wrong++
+  console.log(score,wrong)
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
@@ -59,6 +64,8 @@ function selectAnswer(e) {
     nextButton.classList.remove('hide')
   } else {
     // TODO: end screen
+    hataorani = 100 - ((wrong / (score + wrong)) * 100)
+    console.log(hataorani)
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
   }
@@ -67,8 +74,6 @@ function selectAnswer(e) {
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
-    score++
-    console.log(score)
     element.classList.add('correct')
   } else {
     element.classList.add('wrong')
